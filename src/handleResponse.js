@@ -22,16 +22,27 @@ const getHeaders = response => {
     ? getBrowserFetchHeaders(response)
     : getNodeFetchHeaders(response)
 }
-
+var returnValue
 const formatOutput = (response, body) => {
   const headers = getHeaders(response)
-  const returnValue = {
-    body,
+  if(body){
+ returnValue =  {
+    body
+ 
+  }
+
+  } else {
+ returnValue =  {
+    
+    
     headers,
     response,
     status: response.status,
     statusText: response.statusText
   }
+  }
+  
+
 
   return response.ok
     ? Promise.resolve(returnValue)
